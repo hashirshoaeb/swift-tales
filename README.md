@@ -15,6 +15,49 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/hashirshoaeb?color=ffcc66&logo=twitter&logoColor=ffffff&style=for-the-badge)](https://twitter.com/hashirshoaeb)
 [![GitHub license](https://img.shields.io/github/license/hashirshoaeb/star_book?style=for-the-badge)](https://github.com/hashirshoaeb/star_book/blob/master/LICENSE)
 
+# Table of contents
+
+- [Introduction](#introduction)
+- [Data types](#data-types)
+  - [String](#string)
+  - [Double](#double)
+  - [Boolean](#boolean)
+  - [`var` vs `let`](#var-vs-let)
+- [Collection](#collection)
+  - [Array](#array)
+  - [Tuples](#tuples)
+  - [Dictionaries](#dictionaries)
+  - [Creating empty collections](#creating-empty-collections)
+  - [Enumerations](#enumerations)
+- [Arithmetic operators](#arithmetic-operators)
+- [Keywords](#keywords)
+- [Conditions](#conditions)
+  - [ternary operator](#ternary-operator)
+  - [Switch statements](#switch-statements)
+  - [Range operators](#range-operators)
+- [Loops](#loops)
+  - [for-in loops](#for-in-loops)
+  - [while loops](#while-loops)
+- [Function](#function)
+  - [void](#void)
+  - [Closures / Callbacks](#closures--callbacks)
+- [Struct](#struct)
+- [Strings](#strings)
+- [This / Self](#this--self)
+- [Class](#class)
+  - [Inheritance](#inheritance)
+  - [destructor](#destructor)
+  - [Mutability](#mutability)
+- [Protocol](#protocol)
+  - [Extension](#extension)
+  - [Abstract class](#abstract-class)
+- [Class vs Struct](#class-vs-struct)
+- [Design Patterns](#design-patterns)
+  - [MVC](#mvc)
+  - [Delegate Pattern](#delegate-pattern)
+- [VIP Architecture](#vip-architecture)
+- [Declarative vs Imperative](#declarative-vs-imperative)
+- [Build an App](#build-an-app)
 
 # Introduction
 
@@ -1017,3 +1060,111 @@ classes are reference types
 structs are value type
 
 note: Always make value types equatable. 
+
+# Design Patterns
+
+## MVC
+MVC stands for Model View Controller. But in iOS it is also know as Massive View Controller due to the massive size of ViewController class over time.
+
+![Untitled](./READMEdocs/mvc.png)
+
+communication happen between controller via delegates.
+
+## Delegate Pattern
+
+Delegate pattern is like Observer pattern. Difference is that In Observer there is One to Many (1-to-m) communication. And in delegates there is One to One (1-to-1) communication.
+
+```swift
+// Suppose this is a view
+struct View {
+    var label : String {
+        didSet {
+            print("UI Updated: \(label)")
+        }
+    }
+}
+
+// Model that holds data
+struct Model {
+    var data : String
+}
+
+// API that will end data
+class Api {
+    
+    var delegate : Delegate
+    
+    init(delegate: Delegate){
+        self.delegate = delegate
+    }
+    
+    func getData() {
+        delegate.onData(data: Model(data: "Awesome Data from API"))
+    }
+}
+
+// Delegate to observe onData arrived.
+protocol Delegate {
+    func onData(data: Model)
+}
+
+class ViewController {
+    
+    var view = View(label: "")
+    
+		// loades the screen
+    func screendidLoad(){
+        print("Screen Loaded")
+        view.label = "NO DATA"
+        print("waiting for 5 sec")
+        let api = Api(delegate: self)
+        api.getData()
+    }
+}
+
+// Conforms delegate, wirte the implementaion on data arrival.
+extension ViewController : Delegate {
+    func onData(data: Model) {
+        view.label = "HAS DATA: \(data.data)"
+    }
+}
+
+// main
+var inctance = ViewController()
+inctance.screendidLoad()
+```
+
+Output:
+
+```
+Screen Loaded
+UI Updated: NO DATA
+waiting for 5 sec
+UI Updated: HAS DATA: Awesome Data from API
+```
+
+Box technique: [https://holyswift.app/reactive-swift-the-boxing-technique](https://holyswift.app/reactive-swift-the-boxing-technique)
+
+mvvm: https://github.com/borderfree/imdb-mvvm
+
+# VIP Architecture
+
+# Declarative vs Imperative
+
+Imperative is “How you do something”
+Declarative is “What you do”
+
+[https://www.youtube.com/watch?v=E7Fbf7R3x6I](https://www.youtube.com/watch?v=E7Fbf7R3x6I)
+
+Declarative way is generally a better approach for write easy to understand code.
+
+Many bugs come from the changing state, and assignment (mutation) statements that perform changes “=” are often the root cause of all evil in universe. 
+
+the bigger takeaway that writing reliable software is all about properly managing complexity.
+
+What we can do is we can take our imperative code and abstract it behind a declarative api. In fact many (if not all) declarative apis have some sort of underlying imperative implementation. 
+
+Note: good declarative approach should conforms with the mental model of the developer(human) rather than the operational model of the machine.
+
+
+# Build an App
