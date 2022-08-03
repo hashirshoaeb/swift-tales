@@ -15,9 +15,13 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/hashirshoaeb?color=ffcc66&logo=twitter&logoColor=ffffff&style=for-the-badge)](https://twitter.com/hashirshoaeb)
 [![GitHub license](https://img.shields.io/github/license/hashirshoaeb/star_book?style=for-the-badge)](https://github.com/hashirshoaeb/star_book/blob/master/LICENSE)
 
-# Table of contents
+<!-- A collapsible section containing code -->
+<!-- https://luciopaiva.com/markdown-toc/ -->
+### **Table of contents**
+<details>
+  <summary>Click to expand!</summary>
 
-- [Introduction](#introduction)
+  - [Introduction](#introduction)
 - [Data types](#data-types)
   - [String](#string)
   - [Double](#double)
@@ -58,6 +62,10 @@
 - [VIP Architecture](#vip-architecture)
 - [Declarative vs Imperative](#declarative-vs-imperative)
 - [Build an App](#build-an-app)
+
+</details>
+
+<br/>
 
 # Introduction
 
@@ -1168,3 +1176,6 @@ Note: good declarative approach should conforms with the mental model of the dev
 
 
 # Build an App
+
+**CREDITS**
+- [Hacking With Swift](https://www.hackingwithswift.com/100)
