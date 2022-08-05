@@ -80,7 +80,7 @@ var str = "greetings"
 str = 7 // error
 ```
 
-Swift lets you use underscores as thousands separators – they don’t change the number, but they do make it easier to read. For example:
+Swift lets you use underscores as thousands separators _ they don’t change the number, but they do make it easier to read. For example:
 
 ```swift
 var population = 8_000_000 // 8000000
@@ -123,7 +123,7 @@ lines
 
 ### String interpolation
 
-want to add variable inside string? simply add backslash and put variable inside round brackets.
+Want to add variable inside string? Simply add backslash and put variable inside round brackets.
 
 ```swift
 var score = 85
@@ -148,7 +148,7 @@ let hater = Person(type: "hater", action: "hate")
 print("Status check: \(hater)")
 ```
 
-for more [https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0](https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0)
+For more: [super powered string interpolation in swift 5.0](https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0)
 
 ## **Double**
 
@@ -179,13 +179,13 @@ var isLoaded = 1 // this is not type boolean
 
 **`var`** is a mutable variable. Value in variable with **`var`** can be changed over time.
 
-**`let`** is and immutable variable. Value in variable with **`let`** cannot be changed once assigned. in dart or c++ it is refered as `const`
+**`let`** is and immutable variable. Value in variable with **`let`** cannot be changed once assigned. in dart or c++ it is refered as `const`.
 
 If you try to change value in **`let`**, Xcode will refuse to run your code. It’s a form of safety: when you use constants you can no longer change something by accident.
 
 When you write your own Swift code, you should always use **`let`** unless you specifically want to change a value. In fact, Xcode will warn you if you use **`var`** then *don’t* change the variable.
 
-**`let`** , `var` also accepts late assignment. means declare first and assign later. make sure to assign before using it. btw compiler is intelligent enough to point out. 
+**`let`** , `var` also accepts late assignment. Means, declare first and assign later. make sure to assign before using it. btw compiler is intelligent enough to point out. 
 
 ```swift
 var awesome = true
@@ -261,7 +261,7 @@ For more: [Why is it any different from class and structure?](https://www.hackin
 
 ## **Dictionaries**
 
-key value pair of data collection. i.e (json like sructure), (refered as maps in dart). 
+Key value pair of data collection. i.e (json like sructure), (refered as maps in dart). 
 
 ```swift
 let heights = [
@@ -324,9 +324,9 @@ Enums are very powerful in swift. Read more: [https://www.avanderlee.com/swift/e
 
 # Keywords
 
-`nil` is like `null` in in dart. It is a special value that represents an absence of a value.
+`nil` is like `null` in dart. It is a special value that represents an absence of a value.
 
-Null safety
+## **Null safety**
 
 ```swift
 var count : Int? = nil
@@ -696,7 +696,7 @@ doubleInPlace(number: &myNum)
 
 ## **Closures / Callbacks**
 
-create a function and assign to a variable
+Create a function and assign to a variable.
 
 ```swift
 let driving = {
@@ -774,7 +774,7 @@ travel {
 }
 ```
 
-i little complex example
+A little complex example
 
 ```swift
 func travel(action: (String) -> Void, action2: (String) -> Void) {
